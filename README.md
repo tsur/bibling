@@ -9,7 +9,7 @@
 
 Bibling is a free commnad line tool you can use to interact with the Bible. It provides access to the BibleGateway online services. An internet connection is required in order to use this tool.
 
-To start using it, you first need to install the tool. Make sure you have (nodejs)[https://nodejs.org/] installed in your system and then run `npm install --global bibling`
+To start using it, you first need to install the tool. Make sure you have [nodejs](https://nodejs.org/) installed in your system and then run `npm install --global bibling`
 
 ## And God said
 
