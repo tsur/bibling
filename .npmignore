@@ -1,0 +1,16 @@
+node_modules
+src
+internals
+__tests__
+coverage
+.vscode
+.nyc_output
+.github
+.travis.yml
+.babelrc
+*.tgz
+.npmignore
+.gitignore
+.travis.yml
+yarn.lock
+npm-debug.log

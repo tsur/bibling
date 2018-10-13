@@ -1,0 +1,18 @@
+{
+  "author": {
+    "name": "Tsur",
+    "email": "zurisadai.pabon@gmail.com"
+  },
+  "name": "rae",
+  "version": "1.0.0",
+  "description": "Simple Rae Dictionary Library",
+  "keywords": ["dictionary", "rae", "spanish", "words", "definition", "lema"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsur/node-rae.git"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

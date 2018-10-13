@@ -1,0 +1,111 @@
+{
+  "author": {
+    "name": "Zuri Pabon",
+    "email": "zurisadai.pabon@gmail.com"
+  },
+  "name": "bibling",
+  "version": "1.0.0",
+  "description": "A Basic Bible Command Line Interface",
+  "keywords": [
+    "bible",
+    "command line",
+    "biblegateway",
+    "search"
+  ],
+  "license": "MIT",
+  "main": "build/lib.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsur/bibling.git"
+  },
+  "bin": {
+    "bibling": "./build/cli.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "cheerio": "^1.0.0-rc.2",
+    "circular-dependency-plugin": "^4.2.1",
+    "cp": "^0.2.0",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "exports-loader": "^0.6.4",
+    "file-loader": "^1.1.5",
+    "gh-pages": "^1.0.0",
+    "ghooks": "^2.0.0",
+    "imports-loader": "^0.7.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jest-cli": "^21.2.1",
+    "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "readline": "^1.3.0",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^8.2.0",
+    "should": "^13.1.2",
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.9.0"
+  },
+  "dependencies": {},
+  "scripts": {
+    "pretest": "rimraf coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --no-cache",
+    "build:lib": "webpack --config internals/webpack/lib.js --color -p --progress",
+    "build:cli": "webpack --config internals/webpack/cli.js --color -p --progress",
+    "prebuild": "rimraf build",
+    "build": "npm run build:lib && npm run build:cli",
+    "lint": "eslint . --ignore-path .gitignore --ignore-pattern internals",
+    "validate": "npm run lint && npm run build:cli && npm run test",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "config": {
+    "ghooks": {
+      "pre-push": "npm run lint",
+      "commit-msg": "validate-commit-msg"
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/cli/**/*.js",
+      "!src/server/**/*.js",
+      "!src/site/**/*.js",
+      "!src/__tests__/**/*.js",
+      "!build/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/internals/",
+      "/examples/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/internals/",
+      "/examples/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  }
+}
