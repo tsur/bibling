@@ -13,4 +13,4 @@ To start using it, you first need to install the tool. Make sure you have [nodej
 
 ## And God said
 
-Use `bibling <reference>` to discover what God said. The reference can be whatever you want to search for, or just a simple bible book reference as for instance Gen1:1, which will retrieve The first verse of the first chapter of the book Genesis. Just go ahead and give it a try!. To get the complete list of all available actions, type in your terminal `bibling --help` 
+Use `bibling <reference>` to discover what God said. The reference can be whatever you want to search for, or just a simple bible book reference as for instance `Gen1:1`, which will retrieve The first verse of the first chapter of the book Genesis. Just go ahead and give it a try by running `bibling gen1:1`. To get the complete list of all available actions, type in your terminal `bibling --help` 
