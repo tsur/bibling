@@ -3,11 +3,15 @@ import isEmpty from 'lodash/isEmpty';
 import minimist from 'minimist';
 import BibleClient from 'lib';
 
-function printResult({ verses, title, header }) {
+function printResult({ verses, title = '', header = '' }) {
   if (title) console.log(title);
-  if (header) console.log(header);
+  //if (header && header.toLowerCase() != title.toLowerCase()) console.log(header);
   verses.forEach((verse) => console.log(verse));
   return process.exit(0);
+}
+
+function printTranslations(translations) {
+  translations.forEach(({title, id}) => console.log(`${id}: ${title}`));
 }
 
 export function getOptions() {
@@ -15,8 +19,9 @@ export function getOptions() {
 }
 
 export function areOptionsValid(options) {
+  const list = options.l || options.list;
   const reference = options.r || options.reference || options._[0];
-  if (isEmpty(reference)) {
+  if (!list && isEmpty(reference)) {
     return false;
   }
   return true;
@@ -32,6 +37,7 @@ export function printHelp(logger = console, exit = true) {
     '\n\n Options:',
     '\n\t-r, --reference\n\t\tA bible reference given by a bible book, a chapter and optional verses (i.e. Gen1:1)',
     '\n\t-t, --translation\n\t\tA bible translation version (i.e. NVI)',
+    '\n\t-l, --list\n\t\tList the available bible translations',
     '\n\n'
   );
   if (exit) {
@@ -60,7 +66,18 @@ export function shouldDisplayHelp(options) {
 export function cli(options) {
   const reference = options.r || options.reference || options._[0];
   const translation = options.t || options.translation || options._[1];
-  BibleClient.create()
+  const translationsList = options.l || options.list;
+
+  const bibleClient = BibleClient.create();
+
+  if(translationsList){
+    return bibleClient
+            .translations()
+            .then(printTranslations)
+            .catch((error) => printError(error));
+  }
+
+  bibleClient
     .search(reference, translation)
     .then(printResult)
     .catch((error) => printError(error));
