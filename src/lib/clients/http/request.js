@@ -20,7 +20,7 @@ export default async function ({
     throw NotFoundError(endpoint);
   }
 
-  const parsedRaeData = await parse(await response.text());
+  const parsedData = await parse(await response.text());
 
-  return parsedRaeData;
+  return parsedData;
 }

@@ -4,7 +4,7 @@
     "email": "zurisadai.pabon@gmail.com"
   },
   "name": "bibling",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Basic Bible Command Line Interface",
   "keywords": [
     "bible",
@@ -25,7 +25,9 @@
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
     "circular-dependency-plugin": "^4.2.1",
